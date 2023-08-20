@@ -31,12 +31,15 @@ body {
   color: #ffffff;
 }
 
-/* Main container styles */
+/* Center the main container */
 .App {
   text-align: center;
   padding: 20px;
-  max-width: 1000px; /* Limit the maximum width of the content */
-  margin: 0 auto; /* Center the content horizontally */
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 /* Header styles */
@@ -66,7 +69,11 @@ body {
   width: 60%;
   font-family: inter;
   transition: 0.1s ease-in-out;
+  width: 80%;
+  margin: 0 auto; /* Center the box horizontally */
 }
+
+
 .drag-drop-box:hover {
   background-color: #2e456d;
 }
@@ -97,6 +104,7 @@ body {
   opacity: 1;
   max-height: 1000px;
   transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
+  margin-top:10px;
 }
 
 .display-area:not(.expanded) {
@@ -116,14 +124,45 @@ body {
   text-align: left;
 }
 
-/*Reset button*/
+/* Updated Analyze New File button styles */
 .reset-button {
-  background-color: #0c680c; /* Dark green background */
-  color: white;
+  background-color: #353434;
+  color: rgb(245, 184, 184);
   border: none;
-  padding: 10px 20px;
-  margin-top: 15px; /* Space from the display area */
+  border-radius: 10px; /* Add border-radius for round edges */
+  padding: 10px 10px;
+  margin-top: 5px; /* Space from the display area */
   cursor: pointer;
   font-family: "inter";
   font-size: 16px;
+  margin-top: 10px;
 }
+.reset-button:hover {
+  background-color: #2e456d;
+}
+
+/* Adjust display area transition for expanded and non-expanded states */
+.display-area:not(.expanded) {
+  max-height: none; /* Change this line to max-height: 1000px; */
+  opacity: 1; /* Keep opacity as 1 */
+  overflow: hidden;
+  transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out; /* Add transition property to the non-expanded state */
+}
+
+.flex-container {
+  display: flex;
+  justify-content: space-between; /* Place children at the start and end of the container */
+  align-items: center; /* Center children vertically */
+  width: 100%;
+  margin-bottom: 20px; /* Add some space at the bottom */
+}
+
+/* logo styles */
+.logo {
+  font-size: 6vw;
+  color: #9b9898;
+  margin-top: 5%; /* Adjust margin-top for smaller screens */
+  margin-bottom: 2%; /* Adjust margin-bottom for smaller screens */
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
