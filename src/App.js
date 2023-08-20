@@ -8,7 +8,6 @@ function App() {
   const [uploadedFiles, setUploadedFiles] = useState([]);
   const [isDisplayAreaVisible, setIsDisplayAreaVisible] = useState(false);
 
-  
   const onDrop = async (acceptedFiles) => {
     const fileContents = await Promise.all(
       acceptedFiles.map(async (file) => {
@@ -55,20 +54,21 @@ function App() {
     <div className="App">
       <MovingDots />
 
-      <h1 className = "logo">CodeAssist.ai</h1>
+      <h1 className="logo">CodeAssist.ai</h1>
 
       <div className="button-group">
         <div className="flex-container">
           <div {...getRootProps()} className="drag-drop-box">
             <input {...getInputProps()} />
             <p>
-              Drag and drop a folder here or
-              Click to Choose Folder
+              Drag and drop a folders here or Choose multiple Folders
             </p>
           </div>
-          <button className="reset-button closer-reset" onClick={handleReset}>
-            Upload New File
-          </button>
+          {isDisplayAreaVisible && ( // Conditionally render the button
+            <button className="reset-button closer-reset" onClick={handleReset}>
+              Upload New File
+            </button>
+          )}
         </div>
       </div>
 
