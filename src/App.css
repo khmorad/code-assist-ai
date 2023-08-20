@@ -63,12 +63,25 @@ body {
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
   margin: 20px auto;
   line-height: 2;
-  width: 20%;
+  width: 60%;
   font-family: inter;
+  transition: 0.1s ease-in-out;
+}
+.drag-drop-box:hover {
+  background-color: #2e456d;
 }
 
 /* Code editor and Display area styles */
-.code-editor,
+@keyframes expandDisplayArea {
+  from {
+    max-height: 0;
+    opacity: 0;
+  }
+  to {
+    max-height: 1000px;
+    opacity: 1;
+  }
+}
 .display-area {
   flex: 1;
   background-color: #2d2d2d;
@@ -79,7 +92,18 @@ body {
   color: #ffffff;
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
   margin-top: 20px;
-  font-family: "Courier New", monospace; /* Use a monospaced font for code */
+  font-family: "Courier New", monospace;
+  height: auto;
+  opacity: 1;
+  max-height: 1000px;
+  transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+.display-area:not(.expanded) {
+  max-height: none; /* Change this line to max-height: 1000px; */
+  opacity: 1; /* Keep opacity as 1 */
+  overflow: hidden;
+  transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out; /* Add transition property to the non-expanded state */
 }
 
 /* File input styles */
