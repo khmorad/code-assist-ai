@@ -3,7 +3,7 @@
     left: 0;
     top: 0;
     height: 100vh;
-    width: 300px;
+    width: 250px;
     background-color: #292d34;
     color: white;
     padding: 20px;
@@ -30,11 +30,14 @@
   
   /* Button styles */
   .analyze-button {
-    background-color: #298e3d;
+    background-color: #1744db;
     color: white;
     border: none;
-    border-radius: 15px;
+    border-radius: 5px;
     padding: 10px 20px;
     cursor: pointer;
     margin-top: 15px;
+  }
+  .analyze-button:hover{
+    background-color:#45ac31
   }
