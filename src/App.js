@@ -1,13 +1,33 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import "./scrollBar.css";
 import "./App.css";
-import MovingDots from "./MovingDots";
-
+import MovingDots from "./components/MovingDots";
+import GiveResponse from "./componnentStyling/GiveResponse";
 function App() {
   const [uploadedFiles, setUploadedFiles] = useState([]);
   const [isDisplayAreaVisible, setIsDisplayAreaVisible] = useState(false);
-
+  const LOCAL_FILE_KEY = 'CODEASSISAI.COM'
+  //**********************local files under contruction****************/
+ // useEffect(() => {
+ //   try {
+ //     localStorage.setItem(LOCAL_FILE_KEY, JSON.stringify(uploadedFiles));
+ //   } catch (error) {
+ //     console.error("Error saving data to local storage:", error);
+ //   }
+ // }, [uploadedFiles]);
+//
+ // useEffect(() => {
+ //   try {
+ //     const newList = JSON.parse(localStorage.getItem(LOCAL_FILE_KEY));
+ //     if (newList) {
+ //       setUploadedFiles(newList);
+ //     }
+ //   } catch (error) {
+ //     console.error("Error retrieving data from local storage:", error);
+ //   }
+ // }, []);
+//
   const onDrop = async (acceptedFiles) => {
     const fileContents = await Promise.all(
       acceptedFiles.map(async (file) => {
@@ -49,7 +69,7 @@ function App() {
   };
 
   const { getRootProps, getInputProps } = useDropzone({ onDrop, multiple: true });
-
+  console.log(uploadedFiles)
   return (
     <div className="App">
       <MovingDots />
@@ -73,14 +93,15 @@ function App() {
       </div>
 
       {isDisplayAreaVisible && (
-        <div className="display-area">
-          {uploadedFiles.map((file, index) => (
+          uploadedFiles.map((file, index) => (
+            <div key={index}className="display-area">
             <div key={index} className="file-content">
               <h3>{file.name}</h3>
               <pre>{file.content}</pre>
             </div>
-          ))}
-        </div>
+            </div>
+          ))
+        
       )}
     </div>
   );

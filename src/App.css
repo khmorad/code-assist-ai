@@ -23,16 +23,17 @@ h2 {
 /* Set up some default font and background styles */
 body {
   font-family: Arial, sans-serif;
-  background-color: #1e1e1e;
+  background-color: #263133;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   min-height: 100vh;
   color: #ffffff;
 }
 
 /* Center the main container */
 .App {
+  
   text-align: center;
   padding: 20px;
   width: 100%;
@@ -91,7 +92,7 @@ body {
 }
 .display-area {
   flex: 1;
-  background-color: #2d2d2d;
+  background-color: #2d2d2ded;
   border: 2px solid #444;
   border-radius: 5px;
   padding: 10px;
@@ -99,7 +100,6 @@ body {
   color: #ffffff;
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
   margin-top: 20px;
-  width: 100%;
   font-family: "Courier New", monospace;
   height: auto;
   opacity: 1;
@@ -127,16 +127,17 @@ body {
 
 /* Updated Analyze New File button styles */
 .reset-button {
-  background-color: #353434;
-  color: rgb(245, 184, 184);
+  background-color: #50505729;
+  color: rgb(39, 104, 224);
   border: none;
   border-radius: 10px; /* Add border-radius for round edges */
-  padding: 10px 10px;
+  padding: 15px 10px;
   margin-top: 5px; /* Space from the display area */
   cursor: pointer;
   font-family: "inter";
   font-size: 16px;
   margin-top: 10px;
+  transition: 0.3s ease-out;
 }
 .reset-button:hover {
   background-color: #2e456d;
