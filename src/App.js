@@ -3,7 +3,7 @@ import { useDropzone } from "react-dropzone";
 import "./scrollBar.css";
 import "./App.css";
 import MovingDots from "./components/MovingDots";
-import GiveResponse from "./componnentStyling/GiveResponse";
+import GiveResponse from "./components/GiveResponse";
 function App() {
   const [uploadedFiles, setUploadedFiles] = useState([]);
   const [isDisplayAreaVisible, setIsDisplayAreaVisible] = useState(false);
@@ -103,6 +103,8 @@ function App() {
           ))
         
       )}
+
+      <GiveResponse prompt = {uploadedFiles}/>
     </div>
   );
 }
