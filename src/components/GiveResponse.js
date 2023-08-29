@@ -1,44 +1,40 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useState } from 'react';
+import axios from 'axios';
 
-const GiveResponse = ({ prompt }) => {
-  const [generatedText, setGeneratedText] = useState("");
+const GiveResponse = ({ fileContent }) => {
+  const [generatedText, setGeneratedText] = useState('');
+  const stringContent = JSON.stringify(fileContent); // Stringify the fileContent
 
-  useEffect(() => {
-    generateText();
-  }, [prompt]);
-
-  const generateText = async () => {
-    const apiKey = process.env.REACT_APP_OPENAI_API_KEY
-    const apiUrl = "https://api.openai.com/v1/engines/davinci-codex/completions";
+  const generateSummary = async () => {
+    const prompt = `give quick summery of the project: ${stringContent}`; // Use the prompt with the stringified content
+    const maxTokens = 50;
+    const apiKey = "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";
 
     try {
       const response = await axios.post(
-        apiUrl,
+        'https://api.openai.com/v1/engines/text-davinci-003/completions',
         {
-          prompt: prompt,
-          max_tokens: 300, // Adjust this as needed
-          temperature: 0.4, // Adjust this value (0.2 for more deterministic, 0.8 for more random)
-
+          prompt,
+          max_tokens: maxTokens
         },
         {
           headers: {
-            Authorization: `Bearer ${apiKey}`,
-            "Content-Type": "application/json",
-          },
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${apiKey}`
+          }
         }
       );
 
       setGeneratedText(response.data.choices[0].text);
     } catch (error) {
-      console.error("Error generating text:", error);
+      console.error('Error generating text:', error);
     }
   };
 
   return (
-    <div className="generated-text">
-      <h2>Generated Text:</h2>
-      <p>{generatedText}</p>
+    <div>
+      <button onClick={generateSummary}>Generate Summary</button>
+      <div>{generatedText}</div>
     </div>
   );
 };

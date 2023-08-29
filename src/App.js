@@ -104,7 +104,7 @@ function App() {
         
       )}
 
-      <GiveResponse prompt = {uploadedFiles}/>
+      <GiveResponse fileContent={uploadedFiles}/>
     </div>
   );
 }
