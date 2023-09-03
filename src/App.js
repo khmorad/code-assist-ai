@@ -7,27 +7,31 @@ import GiveResponse from "./components/GiveResponse";
 function App() {
   const [uploadedFiles, setUploadedFiles] = useState([]);
   const [isDisplayAreaVisible, setIsDisplayAreaVisible] = useState(false);
+  const [displayFiles, setDisplayFiles] = useState(false);
+  
+   //**********************local files under contruction****************/
+   /*
   const LOCAL_FILE_KEY = 'CODEASSISAI.COM'
-  //**********************local files under contruction****************/
- // useEffect(() => {
- //   try {
- //     localStorage.setItem(LOCAL_FILE_KEY, JSON.stringify(uploadedFiles));
- //   } catch (error) {
- //     console.error("Error saving data to local storage:", error);
- //   }
- // }, [uploadedFiles]);
-//
- // useEffect(() => {
- //   try {
- //     const newList = JSON.parse(localStorage.getItem(LOCAL_FILE_KEY));
- //     if (newList) {
- //       setUploadedFiles(newList);
- //     }
- //   } catch (error) {
- //     console.error("Error retrieving data from local storage:", error);
- //   }
- // }, []);
-//
+ 
+  useEffect(() => {
+    try {
+      localStorage.setItem(LOCAL_FILE_KEY, JSON.stringify(uploadedFiles));
+    } catch (error) {
+      console.error("Error saving data to local storage:", error);
+    }
+  }, [uploadedFiles]);
+
+  useEffect(() => {
+    try {
+      const newList = JSON.parse(localStorage.getItem(LOCAL_FILE_KEY));
+      if (newList) {
+        setUploadedFiles(newList);
+      }
+    } catch (error) {
+      console.error("Error retrieving data from local storage:", error);
+    }
+  }, []);
+*/
   const onDrop = async (acceptedFiles) => {
     const fileContents = await Promise.all(
       acceptedFiles.map(async (file) => {
@@ -85,14 +89,20 @@ function App() {
             </p>
           </div>
           {isDisplayAreaVisible && ( // Conditionally render the button
+          <>
             <button className="reset-button closer-reset" onClick={handleReset}>
-              Upload New File
+              Upload New Files
             </button>
+            <button className="reset-button closer-reset"  onClick={()=>{setDisplayFiles(!displayFiles)}}>
+              view your files
+            </button>
+          </>
           )}
         </div>
       </div>
-
+      
       {isDisplayAreaVisible && (
+        displayFiles && (
           uploadedFiles.map((file, index) => (
             <div key={index}className="display-area">
             <div key={index} className="file-content">
@@ -100,10 +110,11 @@ function App() {
               <pre>{file.content}</pre>
             </div>
             </div>
-          ))
+          )))
+
         
       )}
-
+      
       <GiveResponse fileContent={uploadedFiles}/>
     </div>
   );

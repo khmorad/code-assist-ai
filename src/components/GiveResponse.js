@@ -8,7 +8,8 @@ const GiveResponse = ({ fileContent }) => {
   const generateSummary = async () => {
     const prompt = `give quick summery of the project: ${stringContent}`; // Use the prompt with the stringified content
     const maxTokens = 50;
-    const apiKey = "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";
+    //api key
+    const apiKey = "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";
 
     try {
       const response = await axios.post(
