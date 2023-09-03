@@ -1,14 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import axios from 'axios';
+
 
 const GiveResponse = ({ fileContent }) => {
   const [generatedText, setGeneratedText] = useState('');
+  const useIn = useRef();
   const stringContent = JSON.stringify(fileContent); // Stringify the fileContent
-
+  
   const generateSummary = async () => {
-    const prompt = `give quick summery of the project: ${stringContent}`; // Use the prompt with the stringified content
-    const maxTokens = 50;
-    const apiKey = "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";
+    const userReq = useIn.current.value;
+    const prompt = `${userReq}: ${stringContent}`; // Use the prompt with the stringified content
+    const maxTokens = 1000;
+   
+    const apiKey = "apikey"
 
     try {
       const response = await axios.post(
@@ -24,7 +28,8 @@ const GiveResponse = ({ fileContent }) => {
           }
         }
       );
-
+      console.log('fileContent:', fileContent);
+      console.log('API Response:', response);
       setGeneratedText(response.data.choices[0].text);
     } catch (error) {
       console.error('Error generating text:', error);
@@ -32,8 +37,12 @@ const GiveResponse = ({ fileContent }) => {
   };
 
   return (
-    <div>
-      <button onClick={generateSummary}>Generate Summary</button>
+    <div className='in-Wrapper'>
+      <div className="inputUser">
+      <input type="text" ref={useIn} placeholder="what should I do?"className="userChange" />
+
+      <button className='but' onClick={generateSummary}>Generate Summary</button>
+      </div>
       <div>{generatedText}</div>
     </div>
   );
