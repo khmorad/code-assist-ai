@@ -8,6 +8,7 @@ function App() {
   const [uploadedFiles, setUploadedFiles] = useState([]);
   const [isDisplayAreaVisible, setIsDisplayAreaVisible] = useState(false);
   const [displayFiles, setDisplayFiles] = useState(false);
+  const [loading, setLoading] = useState(false);
   
    //**********************local files under contruction****************/
    /*
@@ -100,7 +101,9 @@ function App() {
           )}
         </div>
       </div>
-      
+      {isDisplayAreaVisible && (
+      <GiveResponse fileContent={uploadedFiles}/>
+      )}
       {isDisplayAreaVisible && (
         displayFiles && (
           uploadedFiles.map((file, index) => (
@@ -115,7 +118,7 @@ function App() {
         
       )}
       
-      <GiveResponse fileContent={uploadedFiles}/>
+      
     </div>
   );
 }
