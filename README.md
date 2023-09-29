@@ -18,11 +18,11 @@ Khashayar Moradpour has played a pivotal role in conceptualizing and developing 
 
 ### Fulati Aizihaer
 
-Fulati Aizihaer's contributions have been instrumental in shaping the frontend experience of the CodeAssist.AI application. Leveraging the power of React.js, Fulati has designed an engaging and user-friendly interface that seamlessly interacts with the backend. Their attention to detail and creative approach have significantly enhanced the overall usability of the application.
+Fulati Aizihaer's contributions have been instrumental in shaping the backend and frontend experience of the CodeAssist.AI application. Leveraging the power of React.js, Fulati has designed an engaging and user-friendly interface that seamlessly interacts with the backend. Their attention to detail and creative approach have significantly enhanced the overall usability of the application.
 
 ## Technologies Used
 
-- **Backend:** Node.js
+- **Backend:** Django
 - **Frontend:** React.js
 - **Version Control:** GitHub
 
