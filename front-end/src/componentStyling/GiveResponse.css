@@ -1,66 +1,60 @@
+
+/* CSS */
+input{
+    outline: none;
+    border: none;
+    background-color: #2f363b63;
+    color: rgba(247, 247, 247, 0.623); /* added color property */
+    transition: 0.2s ease-in-out;
+    padding: 5px;
+    border-radius: 8px;
+    
+
+}
+input:hover{
+    background-color: #29a8d648;
+    padding-right: 8.5px;
+}
+    
+
 .but {
-    padding: 10px 40px;
-    font-size: 18px;
-    background-color: #008542;
-    color: #fff;
-    text-shadow: 0 2px 0 rgb(0 0 0 / 25%);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    border: 0;
-    z-index: 1;
-    user-select: none;
-    cursor: pointer;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    white-space: unset;
-    padding: .8rem 1.5rem;
-    text-decoration: none;
-    font-weight: 900;
-    transition: all 0.7s cubic-bezier(0,.8,.26,.99);
-   }
-   
-   .but:before {
-    position: absolute;
-    pointer-events: none;
-    top: 0;
-    left: 0;
-    display: block;
-    width: 100%;
-    height: 100%;
-    content: '';
-    transition: .7s cubic-bezier(0,.8,.26,.99);
-    z-index: -1;
-    background-color: #008542!important;
-    box-shadow: 0 -4px rgb(21 108 0 / 50%) inset, 0 4px rgb(100 253 31 / 99%) inset, -4px 0 rgb(100 253 31 / 50%) inset, 4px 0 rgb(21 108 0 / 50%) inset;
-   }
-   
-   .but:after {
-    position: absolute;
-    pointer-events: none;
-    top: 0;
-    left: 0;
-    display: block;
-    width: 100%;
-    height: 100%;
-    content: '';
-    box-shadow: 0 4px 0 0 rgb(0 0 0 / 15%);
-    transition: .7s cubic-bezier(0,.8,.26,.99);
-   }
-   
-   .but:hover:before {
-    box-shadow: 0 -4px rgb(0 0 0 / 50%) inset, 0 4px rgb(255 255 255 / 20%) inset, -4px 0 rgb(255 255 255 / 20%) inset, 4px 0 rgb(0 0 0 / 50%) inset;
-   }
-   
-   .but:hover:after {
-    box-shadow: 0 4px 0 0 rgb(0 0 0 / 15%);
-   }
-   
-   .but:active {
-    transform: translateY(4px);
-   }
-   
-   .but:active:after {
-    box-shadow: 0 0px 0 0 rgb(0 0 0 / 15%);
-   }
+  background-color: #2f363b63;
+  border-radius: 8px;
+  border: 1px solid #7aa7c7;
+  box-shadow: rgba(255, 255, 255, .7) 0 1px 0 0 inset;
+  box-sizing: border-box;
+  color: #39739d;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system,system-ui,"Segoe UI","Liberation Sans",sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.15385;
+  margin: 0;
+  outline: none;
+  padding: 8px .8em;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  white-space: nowrap;
+}
+
+.but:hover,
+.but:focus {
+  background-color: #b3d3ea;
+  color: #2c5777;
+}
+
+.but:focus {
+  box-shadow: 0 0 0 4px rgba(0, 149, 255, .15);
+}
+
+.but:active {
+  background-color: #a0c7e4;
+  box-shadow: none;
+  color: #2c5777;
+}

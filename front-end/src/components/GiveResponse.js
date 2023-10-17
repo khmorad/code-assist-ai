@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import axios from 'axios';
-
+import '../componentStyling/GiveResponse.css';
 
 const GiveResponse = ({ fileContent }) => {
   const [generatedText, setGeneratedText] = useState('');
@@ -41,7 +41,7 @@ const GiveResponse = ({ fileContent }) => {
       <div className="inputUser">
       <input type="text" ref={useIn} placeholder="what should I do?"className="userChange" />
 
-      <button className='but' onClick={generateSummary}>Generate Summary</button>
+      <button className='but' onClick={generateSummary}>give command</button>
       </div>
       <div>{generatedText}</div>
     </div>
