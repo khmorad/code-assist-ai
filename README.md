@@ -35,4 +35,4 @@ To make use of the CodeAssist.AI web application, follow these steps:
 3. To launch the backend navigate to the root directory and start Django  using `python manage.py runserver`.
 4. Navigate to the frontend directory and install dependencies using `npm install`.
 5. To start the frontend navigate to the front-end directory and start the web application using `npm start`.
-6. Access the web application through your browser and begin by uploading your project files.
+6. Access the web application through your browser and begin by uploading your project files and highlighting to select multiple files Selecting folders is not functional at the moment.
