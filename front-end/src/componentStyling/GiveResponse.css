@@ -5,7 +5,7 @@ input{
     border: none;
     background-color: #2f363b63;
     color: rgba(247, 247, 247, 0.623); /* added color property */
-    transition: 0.2s ease-in-out;
+    transition: 0.1s ease-in-out;
     padding: 5px;
     border-radius: 8px;
     
