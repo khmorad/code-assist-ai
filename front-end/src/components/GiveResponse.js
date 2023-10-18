@@ -12,7 +12,7 @@ const GiveResponse = ({ fileContent }) => {
     const prompt = `${userReq}: ${stringContent}`; // Use the prompt with the stringified content
     const maxTokens = 1000;
    
-    const apiKey = "apikey"
+    const apiKey = process.env.REACT_APP_OPENAI_API_KEY;
 
     try {
       const response = await axios.post(

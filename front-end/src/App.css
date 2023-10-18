@@ -131,7 +131,7 @@ body {
   color: rgb(39, 104, 224);
   border: none;
   border-radius: 10px; /* Add border-radius for round edges */
-  padding: 15px 10px;
+  padding: 8px 5px;
   margin-top: 5px; /* Space from the display area */
   cursor: pointer;
   font-family: "inter";
