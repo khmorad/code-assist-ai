@@ -2,14 +2,39 @@ import React, { useEffect, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import "./scrollBar.css";
 import "./App.css";
+import { CodeBlock, dracula } from "react-code-blocks";
+
 import MovingDots from "./components/MovingDots";
 import GiveResponse from "./components/GiveResponse";
+const languageMapping = {
+  "js": "javascript",
+  "py": "python",
+  "java": "java",
+  "css": "css",
+  "html": "html",
+}
 function App() {
   const [uploadedFiles, setUploadedFiles] = useState([]);
   const [isDisplayAreaVisible, setIsDisplayAreaVisible] = useState(false);
   const [displayFiles, setDisplayFiles] = useState(false);
   const [loading, setLoading] = useState(false);
-  
+  const getFileExtension = (filename) => {
+    return filename.split(".").pop().toLowerCase();
+  }
+  const renderCodeBlock = (file) => {
+    const extension = getFileExtension(file.name);
+    const language = languageMapping[extension] || "plaintext"; // Default to plaintext if not found
+
+    return (
+      <CodeBlock 
+        key={file.name}
+        text={file.content}
+        language={language}
+        showLineNumbers={true}
+        theme={dracula}
+      />
+    );
+  };
    //**********************local files under contruction****************/
    /*
   const LOCAL_FILE_KEY = 'CODEASSISAI.COM'
@@ -33,6 +58,8 @@ function App() {
     }
   }, []);
 */
+
+
   const onDrop = async (acceptedFiles) => {
     const fileContents = await Promise.all(
       acceptedFiles.map(async (file) => {
@@ -109,8 +136,9 @@ function App() {
           uploadedFiles.map((file, index) => (
             <div key={index}className="display-area">
             <div key={index} className="file-content">
-              <h3>{file.name}</h3>
-              <pre>{file.content}</pre>
+              <h3 className="file-name">{file.name}</h3>
+              {renderCodeBlock(file)}
+
             </div>
             </div>
           )))

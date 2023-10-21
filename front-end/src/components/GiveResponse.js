@@ -1,5 +1,7 @@
 import React, { useState, useRef } from 'react';
 import axios from 'axios';
+import { CopyBlock } from "react-code-blocks";
+
 import '../componentStyling/GiveResponse.css';
 
 const GiveResponse = ({ fileContent }) => {
@@ -39,7 +41,7 @@ const GiveResponse = ({ fileContent }) => {
   return (
     <div className='in-Wrapper'>
       <div className="inputUser">
-      <input type="text" ref={useIn} placeholder="what should I do?"className="userChange" />
+      <input type="text" ref={useIn} placeholder="what should I do?"className="userChange"/>
 
       <button className='but' onClick={generateSummary}>give command</button>
       </div>

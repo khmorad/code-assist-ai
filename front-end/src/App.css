@@ -42,7 +42,16 @@ body {
   flex-direction: column;
   justify-content: space-between;
 }
+.file-content{
+  text-align: left;
+}
+.file-name{
+   padding: 7px;
 
+}
+.code-block{
+  margin-left: 20px;
+}
 /* Header styles */
 .App-header {
   background-color: #121212;
@@ -92,8 +101,8 @@ body {
 }
 .display-area {
   flex: 1;
-  background-color: #2d2d2ded;
-  border: 2px solid #444;
+  background-color: #2d2d2d5c;
+  border: 2px solid #44444422;
   border-radius: 5px;
   padding: 10px;
   overflow: auto;
@@ -109,30 +118,30 @@ body {
 }
 
 .display-area:not(.expanded) {
-  max-height: none; /* Change this line to max-height: 1000px; */
-  opacity: 1; /* Keep opacity as 1 */
+  max-height: none; 
+  opacity: 1; 
   overflow: hidden;
   transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out; /* Add transition property to the non-expanded state */
 }
 
-/* File input styles */
+
 .file-input {
   display: none;
 }
 
-/* Left-align text in the display area */
+
 .display-area pre {
   text-align: left;
 }
 
-/* Updated Analyze New File button styles */
+
 .reset-button {
   background-color: #50505729;
   color: rgb(39, 104, 224);
   border: none;
-  border-radius: 10px; /* Add border-radius for round edges */
+  border-radius: 10px; 
   padding: 8px 5px;
-  margin-top: 5px; /* Space from the display area */
+  margin-top: 5px; 
   cursor: pointer;
   font-family: "inter";
   font-size: 16px;
@@ -143,28 +152,27 @@ body {
   background-color: #2e456d;
 }
 
-/* Adjust display area transition for expanded and non-expanded states */
 .display-area:not(.expanded) {
-  max-height: none; /* Change this line to max-height: 1000px; */
-  opacity: 1; /* Keep opacity as 1 */
+  max-height: none; 
+  opacity: 1; 
   overflow: hidden;
-  transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out; /* Add transition property to the non-expanded state */
+  transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out; 
 }
 
 .flex-container {
   display: flex;
-  justify-content: space-between; /* Place children at the start and end of the container */
-  align-items: center; /* Center children vertically */
+  justify-content: space-between; 
+  align-items: center; 
   width: 100%;
-  margin-bottom: 20px; /* Add some space at the bottom */
+  margin-bottom: 20px; 
 }
 
 /* logo styles */
 .logo {
   font-size: 6vw;
   color: #9b9898;
-  margin-top: 5%; /* Adjust margin-top for smaller screens */
-  margin-bottom: 2%; /* Adjust margin-bottom for smaller screens */
+  margin-top: 5%; 
+  margin-bottom: 2%; 
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
 }
 
