@@ -1,5 +1,10 @@
 
 /* CSS */
+.response{
+  background-color: #13b6f148;
+  border-radius: 20px;
+  width: 600px;
+}
 input{
     outline: none;
     border: none;
@@ -10,6 +15,9 @@ input{
     border-radius: 8px;
     
 
+}
+.display-area{
+  text-align: left;
 }
 input:hover{
     background-color: #29a8d648;

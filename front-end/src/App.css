@@ -44,6 +44,7 @@ body {
 }
 .file-content{
   text-align: left;
+  
 }
 .file-name{
    padding: 7px;
@@ -174,5 +175,11 @@ body {
   margin-top: 5%; 
   margin-bottom: 2%; 
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+@media screen and (max-width: 768px) {
+  .display-area {
+    max-width: 600px; /* Adjust this value for smaller screens */
+  }
 }
 
