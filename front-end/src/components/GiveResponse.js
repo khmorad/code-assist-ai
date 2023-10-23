@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import axios from 'axios';
 import { CopyBlock } from "react-code-blocks";
-
+import "../App.js"
 import '../componentStyling/GiveResponse.css';
 
 const GiveResponse = ({ fileContent }) => {
@@ -45,7 +45,7 @@ const GiveResponse = ({ fileContent }) => {
 
       <button className='but' onClick={generateSummary}>give command</button>
       </div>
-      <div>{generatedText}</div>
+      <div className='file-content'>{generatedText}</div>
     </div>
   );
 };

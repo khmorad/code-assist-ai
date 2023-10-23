@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDropzone } from "react-dropzone";
+import {BarLoader} from "react-spinners";
 import "./scrollBar.css";
 import "./App.css";
 import { CodeBlock, dracula } from "react-code-blocks";
@@ -16,7 +17,7 @@ const languageMapping = {
 function App() {
   const [uploadedFiles, setUploadedFiles] = useState([]);
   const [isDisplayAreaVisible, setIsDisplayAreaVisible] = useState(false);
-  const [displayFiles, setDisplayFiles] = useState(false);
+  const [displayFiles, setDisplayFiles] = useState(true);
   const [loading, setLoading] = useState(false);
   const getFileExtension = (filename) => {
     return filename.split(".").pop().toLowerCase();
@@ -105,7 +106,6 @@ function App() {
   return (
     <div className="App">
       <MovingDots />
-
       <h1 className="logo">CodeAssist.ai</h1>
 
       <div className="button-group">

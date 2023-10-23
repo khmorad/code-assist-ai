@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "react-code-blocks": "^0.1.4"
+    "react-code-blocks": "^0.1.4",
+    "react-spinners": "^0.13.8"
   }
 }
