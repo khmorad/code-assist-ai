@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import axios from 'axios';
 import { CopyBlock } from "react-code-blocks";
-import "../App.js"
+import "../App.tsx"
 import '../componentStyling/GiveResponse.css';
 
 const GiveResponse = ({ fileContent }) => {
