@@ -4,7 +4,7 @@ import { BarLoader } from "react-spinners";
 import { CodeBlock, dracula } from "react-code-blocks";
 import "./scrollBar.css";
 import "./App.css";
-import MovingDots from "./components/MovingDots";
+import MovingDots from "./components/MovingDots.tsx";
 import GiveResponse from "./components/GiveResponse";
 
 const languageMapping: { [key: string]: string } = {
