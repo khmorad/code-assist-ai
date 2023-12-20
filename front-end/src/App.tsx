@@ -6,6 +6,7 @@ import "./scrollBar.css";
 import "./App.css";
 import MovingDots from "./components/MovingDots.tsx";
 import GiveResponse from "./components/GiveResponse";
+import Navbar from "./components/Navbar.js";
 
 const languageMapping: { [key: string]: string } = {
   js: "javascript",
@@ -91,17 +92,22 @@ function App() {
   });
 
   console.log(uploadedFiles);
-
+  //navbar soon to be implemented
   return (
-    <div className="App">
+    <div>
+  
       <MovingDots />
+    <div className="App">
+      
+      
+      
       <h1 className="logo">CodeAssist.ai</h1>
 
       <div className="button-group">
         <div className="flex-container">
           <div {...getRootProps()} className="drag-drop-box">
             <input {...getInputProps()} />
-            <p>Drag and drop a folders here or Choose multiple Folders</p>
+            <p>Drag and drop your files here or Choose multiple Files</p>
           </div>
           {isDisplayAreaVisible && (
             // Conditionally render the button
@@ -135,6 +141,7 @@ function App() {
           </div>
         ))
       )}
+    </div>
     </div>
   );
 }

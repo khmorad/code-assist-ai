@@ -177,9 +177,9 @@ body {
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1000px) {
   .display-area {
-    max-width: 600px; /* Adjust this value for smaller screens */
+    max-width: 800px;
   }
 }
 

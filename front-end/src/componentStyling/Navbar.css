@@ -1,0 +1,60 @@
+/* Navbar.css */
+
+/* Navbar styles */
+.navbar {
+    background-color: #3333337b;
+    padding: 13px 20px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Navigation menu styles */
+.nav-menu {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.nav-item {
+    margin-right: 30px;
+
+}
+
+.nav-item a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    text-decoration: underline;
+    transition: 0.2s ease-in-out;
+
+
+}
+
+.nav-item a:hover {
+    color: #2b719f;
+}
+
+.nav-item a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    position: relative;
+}
+
+.nav-item a::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #0062ff;
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    transition: width 0.3s;
+}
+
+.nav-item a:hover::after {
+    width: 100%;
+}
