@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "react-code-blocks": "^0.1.4",
+    "react-dropzone": "^14.2.3",
     "react-spinners": "^0.13.8"
   },
   "devDependencies": {
