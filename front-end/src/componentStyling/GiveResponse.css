@@ -16,8 +16,11 @@ input{
     
 
 }
+
 .display-area{
   text-align: left;
+  max-width: 70%;
+  margin: auto;
 }
 input:hover{
     background-color: #29a8d648;
