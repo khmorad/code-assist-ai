@@ -2,12 +2,18 @@
 
 /* Navbar styles */
 .navbar {
-    background-color: #3333337b;
+    background-color: #005f5a;
     padding: 13px 20px;
     width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000; /* Ensure this is higher than the sidebar */
     display: flex;
     justify-content: space-between;
 }
+
+
 
 /* Navigation menu styles */
 .nav-menu {

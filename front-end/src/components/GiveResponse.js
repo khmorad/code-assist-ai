@@ -2,18 +2,18 @@ import React, { useState, useRef } from 'react';
 import "../App.tsx";
 import '../componentStyling/GiveResponse.css';
 
-const GiveResponse = ({ fileContent }) => {
+const GiveResponse = ({ fileContent, onNewResponse }) => {  // Added onNewResponse prop
   const [generatedText, setGeneratedText] = useState('');
-  const [responseReceived, setResponseReceived] = useState(false); // State to track if response is received
+  const [responseReceived, setResponseReceived] = useState(false);
   const useIn = useRef(null);
   const apikey = process.env.REACT_APP_OPENAI_API_KEY;
-  
+
   const handleGenerateSummary = async () => {
-    if (!useIn.current.value.trim()) return; // Do nothing if the input is empty or contains only whitespace
+    if (!useIn.current.value.trim()) return;
     
     const newUserRequest = { role: "outgoing", content: useIn.current.value.trim() };
-    setGeneratedText(""); // Clear the output area before generating new text
-    setResponseReceived(false); // Hide the response window until the response is received
+    setGeneratedText("");
+    setResponseReceived(false);
 
     await processMessageToOpenAI(newUserRequest);
   };
@@ -48,12 +48,15 @@ const GiveResponse = ({ fileContent }) => {
           content: data.choices[0].message.content,
         };
         setGeneratedText(openAIResponse.content);
-        setResponseReceived(true); // Show the response window after receiving the response
+        setResponseReceived(true);
+
+        // Pass the response back to the parent component
+        onNewResponse(openAIResponse.content);  // Call the onNewResponse callback
       })
       .catch((error) => {
         console.error("Error fetching response from OpenAI API:", error);
         setGeneratedText('An error occurred. Please try again later.');
-        setResponseReceived(true); // Show the error message in the response window
+        setResponseReceived(true);
       });
   }
 
@@ -63,7 +66,7 @@ const GiveResponse = ({ fileContent }) => {
         <input type="text" ref={useIn} placeholder="what should I do?" className="userChange" />
         <button className='but' onClick={handleGenerateSummary}>give command</button>
       </div>
-      {responseReceived && ( // Conditionally render the response window
+      {responseReceived && (
         <div className='display-area'>{generatedText}</div>
       )}
     </div>

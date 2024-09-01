@@ -1,0 +1,41 @@
+.sidebar {
+  width: 250px;
+  background-color: #2f3e46;
+  color: #ffffff;
+  padding: 20px;
+  border-right: 2px solid #444;
+  height: calc(100vh - 50px); /* 50px is the height of the navbar */
+  position: fixed;
+  top: 30px; /* Set the top to match the navbar's height */
+  left: 0;
+  overflow-y: auto;
+  z-index: 500; /* Lower than navbar */
+}
+
+
+  
+  .sidebar-title {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+  }
+  
+  .response-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .response-item {
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #3c5a67;
+    border-radius: 5px;
+    cursor: pointer;
+    height: 300px;
+    transition: background-color 0.3s ease;
+    overflow: scroll;
+  }
+  
+  .response-item:hover {
+    background-color: #497285;
+  }
+  
