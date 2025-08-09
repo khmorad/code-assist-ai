@@ -1,66 +1,176 @@
 /* Navbar.css */
-
-/* Navbar styles */
 .navbar {
-    background-color: #005f5a;
-    padding: 13px 20px;
-    width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1000; /* Ensure this is higher than the sidebar */
-    display: flex;
-    justify-content: space-between;
+  background: rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(12px);
+  padding: 1rem 2rem;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(71, 85, 105, 0.3);
+  transition: all 0.3s ease;
 }
 
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #6366f1, #06b6d4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-decoration: none;
+}
 
-
-/* Navigation menu styles */
 .nav-menu {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 2rem;
+  align-items: center;
 }
 
 .nav-item {
-    margin-right: 30px;
-
+  position: relative;
 }
 
 .nav-item a {
-    text-decoration: none;
-    color: #fff;
-    font-weight: bold;
-    text-decoration: underline;
-    transition: 0.2s ease-in-out;
+  text-decoration: none;
+  color: #cbd5e1;
+  font-weight: 500;
+  font-size: 0.875rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
 
+.nav-item a::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(6, 182, 212, 0.1));
+  border-radius: 0.5rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
 
+.nav-item a:hover::before {
+  opacity: 1;
 }
 
 .nav-item a:hover {
-    color: #2b719f;
-}
-
-.nav-item a {
-    text-decoration: none;
-    color: #fff;
-    font-weight: bold;
-    position: relative;
+  color: #f8fafc;
+  transform: translateY(-1px);
 }
 
 .nav-item a::after {
-    content: '';
-    display: block;
-    width: 0;
-    height: 2px;
-    background: #0062ff;
-    position: absolute;
-    bottom: -3px;
-    left: 0;
-    transition: width 0.3s;
+  content: '';
+  position: absolute;
+  bottom: -0.25rem;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(135deg, #6366f1, #06b6d4);
+  border-radius: 1px;
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
 }
 
 .nav-item a:hover::after {
+  width: 80%;
+}
+
+.nav-item.active a {
+  color: #f8fafc;
+  background: rgba(99, 102, 241, 0.1);
+}
+
+.nav-item.active a::after {
+  width: 80%;
+}
+
+/* Mobile menu toggle */
+.mobile-menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: #cbd5e1;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.mobile-menu-toggle:hover {
+  color: #f8fafc;
+  background: rgba(99, 102, 241, 0.1);
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 1rem;
+  }
+  
+  .mobile-menu-toggle {
+    display: block;
+  }
+  
+  .nav-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(15, 23, 42, 0.98);
+    backdrop-filter: blur(12px);
+    flex-direction: column;
+    gap: 0;
+    padding: 1rem;
+    border-top: 1px solid rgba(71, 85, 105, 0.3);
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+  }
+  
+  .nav-menu.active {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  .nav-item {
     width: 100%;
+  }
+  
+  .nav-item a {
+    width: 100%;
+    padding: 1rem;
+    justify-content: center;
+  }
+  
+  .navbar-brand {
+    font-size: 1.25rem;
+  }
+}
+
+/* Smooth scrolling for anchor links */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Focus styles for accessibility */
+.nav-item a:focus,
+.mobile-menu-toggle:focus {
+  outline: 2px solid #6366f1;
+  outline-offset: 2px;
 }

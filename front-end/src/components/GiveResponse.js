@@ -1,10 +1,10 @@
 import React, { useState, useRef } from 'react';
-import "../App.tsx";
 import '../componentStyling/GiveResponse.css';
 
 const GiveResponse = ({ fileContent, onNewResponse }) => {  // Added onNewResponse prop
   const [generatedText, setGeneratedText] = useState('');
   const [responseReceived, setResponseReceived] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const useIn = useRef(null);
   const apikey = process.env.REACT_APP_OPENAI_API_KEY;
 
@@ -14,14 +14,16 @@ const GiveResponse = ({ fileContent, onNewResponse }) => {  // Added onNewRespon
     const newUserRequest = { role: "outgoing", content: useIn.current.value.trim() };
     setGeneratedText("");
     setResponseReceived(false);
+    setIsLoading(true);
 
     await processMessageToOpenAI(newUserRequest);
+    useIn.current.value = '';
   };
 
   async function processMessageToOpenAI(message) {
     const promptMessage = {
       role: "system",
-      content: `This is a summary request based on the provided file content: ${JSON.stringify(fileContent)}`,
+      content: `You are CodeAssist.AI, an expert code analysis assistant. Analyze the provided file content and respond to the user's request. Provide detailed, helpful feedback about code quality, potential issues, improvements, and best practices. File content: ${JSON.stringify(fileContent)}`,
     };
 
     const apiRequestBody = {
@@ -30,7 +32,8 @@ const GiveResponse = ({ fileContent, onNewResponse }) => {  // Added onNewRespon
         promptMessage,
         { role: "user", content: message.content },
       ],
-      max_tokens: 1000,
+      max_tokens: 1500,
+      temperature: 0.7,
     };
 
     await fetch("https://api.openai.com/v1/chat/completions", {
@@ -49,25 +52,53 @@ const GiveResponse = ({ fileContent, onNewResponse }) => {  // Added onNewRespon
         };
         setGeneratedText(openAIResponse.content);
         setResponseReceived(true);
+        setIsLoading(false);
 
         // Pass the response back to the parent component
         onNewResponse(openAIResponse.content);  // Call the onNewResponse callback
       })
       .catch((error) => {
         console.error("Error fetching response from OpenAI API:", error);
-        setGeneratedText('An error occurred. Please try again later.');
+        setGeneratedText('❌ An error occurred while processing your request. Please check your API key and try again.');
         setResponseReceived(true);
+        setIsLoading(false);
       });
   }
+
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      handleGenerateSummary();
+    }
+  };
 
   return (
     <div className='in-Wrapper'>
       <div className="inputUser">
-        <input type="text" ref={useIn} placeholder="what should I do?" className="userChange" />
-        <button className='but' onClick={handleGenerateSummary}>give command</button>
+        <textarea 
+          ref={useIn} 
+          placeholder="Ask me anything about your code... (e.g., 'Find bugs', 'Suggest improvements', 'Explain this function')"
+          className="userChange"
+          onKeyPress={handleKeyPress}
+          disabled={isLoading}
+          rows={1}
+          style={{ resize: 'vertical', minHeight: '44px' }}
+        />
+        <button 
+          className={`but ${isLoading ? 'loading' : ''}`} 
+          onClick={handleGenerateSummary}
+          disabled={isLoading}
+        >
+          {isLoading ? 'Analyzing...' : '🚀 Analyze Code'}
+        </button>
       </div>
       {responseReceived && (
-        <div className='display-area'>{generatedText}</div>
+        <div className='response-display'>
+          <h3>AI Analysis</h3>
+          <div style={{ whiteSpace: 'pre-wrap', lineHeight: 1.6 }}>
+            {generatedText}
+          </div>
+        </div>
       )}
     </div>
   );
